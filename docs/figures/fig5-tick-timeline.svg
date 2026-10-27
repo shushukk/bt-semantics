@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="18" font-weight="500" fill="#1c1e21">6 拍 = 同一个小循环重复 3 次（因为"逃跑"要 2 拍）</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#5F5E5A">环境一直是 see_enemy=T；蓝列 = 动作刚启动的那拍，绿列 = 动作完成的那拍</text>
+
+  <g>
+    <rect x="170" y="112" width="130" height="204" fill="#E6F1FB"/>
+    <rect x="300" y="112" width="130" height="204" fill="#EAF3DE"/>
+    <rect x="430" y="112" width="130" height="204" fill="#E6F1FB"/>
+    <rect x="560" y="112" width="130" height="204" fill="#EAF3DE"/>
+    <rect x="690" y="112" width="130" height="204" fill="#E6F1FB"/>
+    <rect x="820" y="112" width="130" height="204" fill="#EAF3DE"/>
+  </g>
+
+  <text x="235" y="92" text-anchor="middle" font-size="13" font-weight="500" fill="#1c1e21">第 0 拍</text>
+  <text x="365" y="92" text-anchor="middle" font-size="13" font-weight="500" fill="#1c1e21">第 1 拍</text>
+  <text x="495" y="92" text-anchor="middle" font-size="13" font-weight="500" fill="#1c1e21">第 2 拍</text>
+  <text x="625" y="92" text-anchor="middle" font-size="13" font-weight="500" fill="#1c1e21">第 3 拍</text>
+  <text x="755" y="92" text-anchor="middle" font-size="13" font-weight="500" fill="#1c1e21">第 4 拍</text>
+  <text x="885" y="92" text-anchor="middle" font-size="13" font-weight="500" fill="#1c1e21">第 5 拍</text>
+
+  <text x="150" y="136" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">环境</text>
+  <text x="150" y="188" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">记忆（书签）</text>
+  <text x="150" y="240" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">根节点返回</text>
+  <text x="150" y="292" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">事件</text>
+
+  <g font-size="12" fill="#444441">
+    <text x="235" y="136" text-anchor="middle">see_enemy=T</text>
+    <text x="365" y="136" text-anchor="middle">see_enemy=T</text>
+    <text x="495" y="136" text-anchor="middle">see_enemy=T</text>
+    <text x="625" y="136" text-anchor="middle">see_enemy=T</text>
+    <text x="755" y="136" text-anchor="middle">see_enemy=T</text>
+    <text x="885" y="136" text-anchor="middle">see_enemy=T</text>
+  </g>
+
+  <g font-size="12" fill="#0C447C">
+    <text x="235" y="182" text-anchor="middle">逃跑 i=1, c=1</text>
+    <text x="495" y="182" text-anchor="middle">逃跑 i=1, c=1</text>
+    <text x="755" y="182" text-anchor="middle">逃跑 i=1, c=1</text>
+  </g>
+  <g font-size="12" fill="#27500A">
+    <text x="365" y="182" text-anchor="middle">全部清零</text>
+    <text x="625" y="182" text-anchor="middle">全部清零</text>
+    <text x="885" y="182" text-anchor="middle">全部清零</text>
+  </g>
+
+  <g font-size="13" font-weight="500" fill="#185FA5">
+    <text x="235" y="234" text-anchor="middle">运行中 R</text>
+    <text x="495" y="234" text-anchor="middle">运行中 R</text>
+    <text x="755" y="234" text-anchor="middle">运行中 R</text>
+  </g>
+  <g font-size="13" font-weight="500" fill="#3B6D11">
+    <text x="365" y="234" text-anchor="middle">成功 S</text>
+    <text x="625" y="234" text-anchor="middle">成功 S</text>
+    <text x="885" y="234" text-anchor="middle">成功 S</text>
+  </g>
+
+  <g font-size="12" fill="#185FA5">
+    <text x="235" y="286" text-anchor="middle">flee（启动）</text>
+    <text x="495" y="286" text-anchor="middle">flee（启动）</text>
+    <text x="755" y="286" text-anchor="middle">flee（启动）</text>
+  </g>
+  <g font-size="12" fill="#5F5E5A">
+    <text x="365" y="286" text-anchor="middle">无</text>
+    <text x="625" y="286" text-anchor="middle">无</text>
+    <text x="885" y="286" text-anchor="middle">无</text>
+  </g>
+
+  <line x1="170" y1="316" x2="950" y2="316" stroke="#D3D1C7" stroke-width="0.8"/>
+  <g font-size="11" fill="#377ADD">
+    <text x="365" y="310" text-anchor="middle">完成那拍不记录事件</text>
+    <text x="625" y="310" text-anchor="middle">完成那拍不记录事件</text>
+    <text x="885" y="310" text-anchor="middle">完成那拍不记录事件</text>
+  </g>
+
+  <path d="M175 342 L175 352 L425 352 L425 342" fill="none" stroke="#888780" stroke-width="1"/>
+  <text x="300" y="370" text-anchor="middle" font-size="12" fill="#444441">一轮 = 2 拍</text>
+  <path d="M435 342 L435 352 L685 352 L685 342" fill="none" stroke="#888780" stroke-width="1"/>
+  <text x="560" y="370" text-anchor="middle" font-size="12" fill="#444441">一轮 = 2 拍</text>
+  <path d="M695 342 L695 352 L945 352 L945 342" fill="none" stroke="#888780" stroke-width="1"/>
+  <text x="820" y="370" text-anchor="middle" font-size="12" fill="#444441">一轮 = 2 拍</text>
+
+  <text x="480" y="404" text-anchor="middle" font-size="13" fill="#5F5E5A">"运行 -> 成功" 各占一拍，正是动作时长 d=2 的含义；成功后记忆清零，下一拍又从"敌人可见?"重新问起</text>
+  <text x="480" y="426" text-anchor="middle" font-size="13" fill="#5F5E5A">所以 6 拍只触发 3 次 flee：事件只在"启动"那一拍记录，完成那一拍不再记录</text>
+</svg>

@@ -1,0 +1,52 @@
+{
+  "name": "守卫撤退（性质全部成立）",
+  "horizon": 8,
+  "root": {
+    "type": "selector",
+    "id": "root",
+    "children": [
+      {
+        "type": "sequence",
+        "id": "flee_seq",
+        "children": [
+          { "type": "condition", "id": "c_enemy", "atom": "see_enemy" },
+          { "type": "action", "id": "a_flee", "name": "flee", "duration": 2 }
+        ]
+      },
+      {
+        "type": "sequence",
+        "id": "heal_seq",
+        "children": [
+          { "type": "condition", "id": "c_low_hp", "atom": "low_hp" },
+          { "type": "action", "id": "a_heal", "name": "heal", "duration": 2 }
+        ]
+      },
+      { "type": "action", "id": "a_patrol", "name": "patrol", "duration": 2 }
+    ]
+  },
+  "properties": [
+    {
+      "name": "P1 反应性",
+      "kind": "response",
+      "trigger": { "atom": "see_enemy" },
+      "target": { "event": "flee" },
+      "sustain": 2,
+      "within": 2,
+      "description": "敌人持续可见 2 个 tick 时，2 个 tick 内必然开始逃跑"
+    },
+    {
+      "name": "P2 无死锁",
+      "kind": "response",
+      "trigger": { "const": true },
+      "target": { "or": [{ "event": "flee" }, { "event": "heal" }, { "event": "patrol" }] },
+      "within": 3,
+      "description": "无论环境如何变化，任意 3 个 tick 内至少有一个动作被触发（不会卡死）"
+    },
+    {
+      "name": "P3 可达性",
+      "kind": "reach",
+      "body": { "event": "heal" },
+      "description": "治疗动作是可达的（存在性见证）"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="18" font-weight="500" fill="#1c1e21">一条 SOS 推理规则的读法：规则 S-SEQ-F</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#5F5E5A">子节点失败，则顺序节点失败、书签归零 —— 对应 btfsv/tree.py 中 Sequence.tick 的 FAILURE 分支</text>
+
+  <rect x="300" y="86" width="380" height="150" rx="12" fill="#F6F7F9" stroke="#B4B2A9" stroke-width="0.8"/>
+  <text x="490" y="126" text-anchor="middle" font-size="16" fill="#1c1e21">〈 c_i , M 〉 ==&gt; F ,  M' ,  E</text>
+  <line x1="330" y1="158" x2="650" y2="158" stroke="#444441" stroke-width="1.2"/>
+  <text x="490" y="200" text-anchor="middle" font-size="16" fill="#1c1e21">〈 seq[c1..cn][i] , M 〉 ==&gt; F ,  M'[i:=0] ,  E</text>
+
+  <rect x="40" y="100" width="230" height="50" rx="10" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
+  <text x="155" y="122" text-anchor="middle" font-size="14" font-weight="500" fill="#791F1F">前提：第 i 个孩子这拍失败</text>
+  <text x="155" y="140" text-anchor="middle" font-size="12" fill="#A32D2D">横线上面 = 要满足的条件</text>
+  <line x1="272" y1="125" x2="298" y2="128" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="4 4"/>
+
+  <rect x="40" y="176" width="230" height="50" rx="10" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
+  <text x="155" y="198" text-anchor="middle" font-size="14" font-weight="500" fill="#791F1F">结论：整个顺序节点失败</text>
+  <text x="155" y="216" text-anchor="middle" font-size="12" fill="#A32D2D">横线下面 = 得到的结果</text>
+  <line x1="272" y1="199" x2="298" y2="198" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="4 4"/>
+
+  <rect x="710" y="176" width="212" height="50" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+  <text x="816" y="198" text-anchor="middle" font-size="14" font-weight="500" fill="#633806">M'[i:=0]：书签归零</text>
+  <text x="816" y="216" text-anchor="middle" font-size="12" fill="#854F0B">下次从头试，不接着上次</text>
+  <line x1="682" y1="198" x2="708" y2="199" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="4 4"/>
+
+  <text x="40" y="286" font-size="14" font-weight="500" fill="#1c1e21">记号表（图为键盘友好写法，论文里用标准数学符号）</text>
+  <g>
+    <rect x="40" y="300" width="220" height="40" rx="8" fill="#F6F7F9" stroke="#B4B2A9" stroke-width="0.8"/>
+    <text x="150" y="326" text-anchor="middle" font-size="13" fill="#444441">环境 = 外部输入（敌人可见？）</text>
+  </g>
+  <g>
+    <rect x="276" y="300" width="200" height="40" rx="8" fill="#F6F7F9" stroke="#B4B2A9" stroke-width="0.8"/>
+    <text x="376" y="326" text-anchor="middle" font-size="13" fill="#444441">M = 记忆（书签 / 计数器）</text>
+  </g>
+  <g>
+    <rect x="492" y="300" width="200" height="40" rx="8" fill="#F6F7F9" stroke="#B4B2A9" stroke-width="0.8"/>
+    <text x="592" y="326" text-anchor="middle" font-size="13" fill="#444441">==&gt; F = 这拍结束，返回失败</text>
+  </g>
+  <g>
+    <rect x="708" y="300" width="212" height="40" rx="8" fill="#F6F7F9" stroke="#B4B2A9" stroke-width="0.8"/>
+    <text x="814" y="326" text-anchor="middle" font-size="13" fill="#444441">--&gt; R = 没干完，下拍接着干</text>
+  </g>
+  <text x="480" y="386" text-anchor="middle" font-size="13" fill="#5F5E5A">项目共 14 条规则（A-RUN / S-SEQ-S / S-PAR-F ...），前提互不重叠、合起来覆盖所有情况，"没有歧义"因此是可证明的</text>
+  <text x="480" y="408" text-anchor="middle" font-size="13" fill="#5F5E5A">python -m btfsv rules 可打印全部规则；加 --format latex 直接生成论文用的公式</text>
+</svg>

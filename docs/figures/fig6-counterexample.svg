@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="18" font-weight="500" fill="#1c1e21">反例长什么样：9 拍里 heal 循环了 3 次，flee 一次都没出现</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#5F5E5A">这就是 `verify examples/buggy.json` 打印的那张表；红框是"性质被违反的窗口"</text>
+
+  <rect x="150" y="76" width="792" height="224" fill="#FAFAF8"/>
+  <rect x="148" y="76" width="268" height="224" fill="#FCEBEB" opacity="0.45"/>
+  <rect x="148" y="76" width="268" height="224" fill="none" stroke="#E24B4A" stroke-width="1.2" stroke-dasharray="6 4"/>
+
+  <text x="140" y="104" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">拍</text>
+  <text x="140" y="150" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">see_enemy</text>
+  <text x="140" y="196" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">heal 记忆 c</text>
+  <text x="140" y="242" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">走的分支</text>
+  <text x="140" y="288" text-anchor="end" font-size="13" font-weight="500" fill="#1c1e21">事件</text>
+
+  <g font-size="12" fill="#444441" text-anchor="middle">
+    <text x="194" y="104">0</text><text x="282" y="104">1</text><text x="370" y="104">2</text>
+    <text x="458" y="104">3</text><text x="546" y="104">4</text><text x="634" y="104">5</text>
+    <text x="722" y="104">6</text><text x="810" y="104">7</text><text x="898" y="104">8</text>
+  </g>
+
+  <g font-size="13" font-weight="500" text-anchor="middle">
+    <text x="194" y="150" fill="#A32D2D">T</text><text x="282" y="150" fill="#A32D2D">T</text>
+    <text x="370" y="150" fill="#5F5E5A">F</text><text x="458" y="150" fill="#5F5E5A">F</text>
+    <text x="546" y="150" fill="#A32D2D">T</text><text x="634" y="150" fill="#5F5E5A">F</text>
+    <text x="722" y="150" fill="#A32D2D">T</text><text x="810" y="150" fill="#A32D2D">T</text>
+    <text x="898" y="150" fill="#A32D2D">T</text>
+  </g>
+
+  <g font-size="12" text-anchor="middle" fill="#633806">
+    <text x="194" y="196">1</text><text x="282" y="196">2</text><text x="370" y="196">3</text>
+    <text x="458" y="196">清零</text>
+    <text x="546" y="196">1</text><text x="634" y="196">2</text><text x="722" y="196">3</text>
+    <text x="810" y="196">清零</text>
+    <text x="898" y="196">1</text>
+  </g>
+
+  <g font-size="11" text-anchor="middle" fill="#5F5E5A">
+    <text x="194" y="242">治疗 1/4</text><text x="282" y="242">治疗 2/4</text><text x="370" y="242">治疗 3/4</text>
+    <text x="458" y="242">治疗 4/4</text>
+    <text x="546" y="242">治疗 1/4</text><text x="634" y="242">治疗 2/4</text><text x="722" y="242">治疗 3/4</text>
+    <text x="810" y="242">治疗 4/4</text>
+    <text x="898" y="242">治疗 1/4</text>
+  </g>
+
+  <g font-size="12" text-anchor="middle">
+    <text x="194" y="288" fill="#854F0B">heal</text>
+    <text x="282" y="288" fill="#888780">-</text><text x="370" y="288" fill="#888780">-</text>
+    <text x="458" y="288" fill="#888780">-</text>
+    <text x="546" y="288" fill="#854F0B">heal</text>
+    <text x="634" y="288" fill="#888780">-</text><text x="722" y="288" fill="#888780">-</text>
+    <text x="810" y="288" fill="#888780">-</text>
+    <text x="898" y="288" fill="#854F0B">heal</text>
+  </g>
+
+  <text x="282" y="322" text-anchor="middle" font-size="12" font-weight="500" fill="#A32D2D">反例窗口 t0~t2：敌人连续 2 拍可见，但 2 拍内 flee 没出现</text>
+
+  <path d="M194 336 L194 352 L458 352 L458 336" fill="none" stroke="#888780" stroke-width="1"/>
+  <text x="326" y="372" text-anchor="middle" font-size="12" fill="#444441">治疗跑完 4 拍才清零</text>
+  <path d="M546 336 L546 352 L810 352 L810 336" fill="none" stroke="#888780" stroke-width="1"/>
+  <text x="678" y="372" text-anchor="middle" font-size="12" fill="#444441">再来一轮</text>
+
+  <rect x="40" y="392" width="880" height="58" rx="10" fill="#FCEBEB" stroke="#E24B4A" stroke-width="0.8"/>
+  <text x="60" y="414" font-size="13" fill="#791F1F">为什么 flee 永远轮不到：low_hp 一直是 F，Inverter（取反）把"低血量？"变成了"成功" →</text>
+  <text x="60" y="436" font-size="13" fill="#791F1F">Selector 每次都在第 1 个分支（治疗）就被满足、直接返回，第 2 个分支（逃跑）从来没有机会被检查。</text>
+</svg>
